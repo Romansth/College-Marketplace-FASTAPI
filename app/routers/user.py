@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from typing import List
-from .. import models, schemas, utils
+from .. import models, schemas, utils, oauth2
 from ..database import get_db
 
 router = APIRouter(
@@ -33,4 +33,15 @@ def get_user_listings(id: int, db: Session = Depends(get_db)):
     if not listings:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"user listings for user id: {id} was not found")
     return listings
- 
+
+@router.get("/{id}/orders") #sellers to see their products
+def get_user_orders(id: int, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+    orders = db.query(models.Order).filter(models.Order.seller_id==id).all()
+
+    if not orders:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"No orders found")
+
+    if orders[0].seller_id != current_user.user_id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Please login as seller to see your orders")
+
+    return orders

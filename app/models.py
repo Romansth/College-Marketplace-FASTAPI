@@ -27,4 +27,14 @@ class User(Base):
     class_year = Column(Integer, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
- 
+class Order(Base):
+    __tablename__ = 'orders'
+    
+    order_id = Column(Integer, primary_key=True, nullable=False)
+    buyer_id = Column(Integer, ForeignKey('users.user_id'))
+    seller_id = Column(Integer, ForeignKey('users.user_id'))
+    product_id = Column(Integer, ForeignKey('listings.product_id'))
+    quantity = Column(Integer, nullable=False)
+    cost = Column(Integer, nullable=False)
+    order_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    status = Column(String, nullable=False, default='pending')

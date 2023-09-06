@@ -52,3 +52,10 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[str] = None
+
+class OrderRequest(BaseModel):
+    product_id: int
+    quantity: int
+
+class OrderStatusChange(BaseModel):
+    status: str
