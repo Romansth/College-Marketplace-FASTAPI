@@ -44,7 +44,7 @@ def delete_listing(id: int, db: Session = Depends(get_db), current_user: int = D
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-@router.put("/{id}", response_model=schemas.Listing)
+@router.put("/{id}", status_code=status.HTTP_200_OK, response_model=schemas.Listing)
 def update_listing(id: int, listing: schemas.ListingCreate, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     updated_listing_query = db.query(models.Listing).filter(models.Listing.product_id == id)
     updated_listing = updated_listing_query.first()
