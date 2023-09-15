@@ -2,7 +2,10 @@
 
 ### Demo link: tiny.cc/
 
+### Screenshot:
+
 ![](https://media.discordapp.net/attachments/683899874034319360/1152318354825158666/Screenshot_2023-09-15_at_3.00.04_PM.png?width=1902&height=1124)
+
 
 ##  API Routes
 
@@ -24,6 +27,7 @@ This route manages user login and authentication.
 
 This route is used to create new orders for an existing listing and change the status of a pending order.
 
+
 ## Setup
 
 1. Clone this repository:
@@ -40,7 +44,7 @@ This route is used to create new orders for an existing listing and change the s
     ```bash
     source  <virtual_env_path>/bin/activate
     ```
-
+    
 ### Running Locally
 1.  Install dependencies:
     ```bash
@@ -65,6 +69,8 @@ This route is used to create new orders for an existing listing and change the s
 7.  To run tests with pytest: 
     ```python
     pytest
+    ```
+
 ### Running Locally with Docker
 
 1. Prerequisites:
@@ -91,6 +97,7 @@ docker-compose up -d
 
 4.  Access the API documentation at:
     `http://127.0.0.1:80/docs`
+
 
 ## License 
 This project is licensed under the MIT License.
