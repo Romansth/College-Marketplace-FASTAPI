@@ -1,6 +1,6 @@
 # College Marketplace Backend API using FastAPI
 
-### Demo link: tiny.cc/
+### Demo link: [https://cmarketplace.romansth.com](https://cmarketplace.romansth.com/docs)
 
 ### Screenshot:
 
